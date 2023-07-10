@@ -7,14 +7,14 @@ description: "Automatically generated file. DO NOT MODIFY"
 <?php
 
 // THIS SNIPPET IS A PREVIEW FOR THE KIOTA BASED SDK. NON-PRODUCTION USE ONLY
-$graphServiceClient = new GraphServiceClient($requestAdapter);
+$graphServiceClient = new GraphServiceClient($tokenRequestContext, $scopes);
 
 $requestBody = new AccessPackageAssignmentPolicy();
 $requestBody->setDisplayName('New Policy');
 
 $requestBody->setDescription('policy for assignment');
 
-$requestBody->setAllowedTargetScope(new AllowedTargetScope('notspecified'));
+$requestBody->setAllowedTargetScope(new AllowedTargetScope('notSpecified'));
 
 $requestBody->setSpecificAllowedTargets([]);
 
@@ -23,7 +23,7 @@ $Expiration->setEndDateTime(null);
 
 $Expiration->setDuration(null);
 
-$expiration->setType(new ExpirationPatternType('noexpiration'));
+$expiration->setType(new ExpirationPatternType('noExpiration'));
 
 
 $requestBody->setExpiration($expiration);

@@ -7,12 +7,12 @@ description: "Automatically generated file. DO NOT MODIFY"
 <?php
 
 // THIS SNIPPET IS A PREVIEW FOR THE KIOTA BASED SDK. NON-PRODUCTION USE ONLY
-$graphServiceClient = new GraphServiceClient($requestAdapter);
+$graphServiceClient = new GraphServiceClient($tokenRequestContext, $scopes);
 
 $requestBody = new AudioRoutingGroup();
 $requestBody->setId('oneToOne');
 
-$requestBody->setRoutingMode(new RoutingMode('onetoone'));
+$requestBody->setRoutingMode(new RoutingMode('oneToOne'));
 
 $requestBody->setSources(['632899f8-2ea1-4604-8413-27bd2892079f', ]);
 

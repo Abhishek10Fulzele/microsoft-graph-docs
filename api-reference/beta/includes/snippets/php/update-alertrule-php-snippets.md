@@ -7,7 +7,7 @@ description: "Automatically generated file. DO NOT MODIFY"
 <?php
 
 // THIS SNIPPET IS A PREVIEW FOR THE KIOTA BASED SDK. NON-PRODUCTION USE ONLY
-$graphServiceClient = new GraphServiceClient($requestAdapter);
+$graphServiceClient = new GraphServiceClient($tokenRequestContext, $scopes);
 
 $requestBody = new AlertRule();
 $requestBody->setSeverity(new RuleSeverityType('informational'));
@@ -17,7 +17,7 @@ $requestBody->setEnabled(true);
 $threshold = new RuleThreshold();
 $threshold->setAggregation(new AggregationType('count'));
 
-$threshold->setOperator(new OperatorType('greaterorequal'));
+$threshold->setOperator(new OperatorType('greaterOrEqual'));
 
 $threshold->setTarget(90);
 

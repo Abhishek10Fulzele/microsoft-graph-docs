@@ -7,7 +7,7 @@ description: "Automatically generated file. DO NOT MODIFY"
 <?php
 
 // THIS SNIPPET IS A PREVIEW FOR THE KIOTA BASED SDK. NON-PRODUCTION USE ONLY
-$graphServiceClient = new GraphServiceClient($requestAdapter);
+$graphServiceClient = new GraphServiceClient($tokenRequestContext, $scopes);
 
 $requestBody = new AccessPackageAssignmentPolicy();
 $requestBody->setDisplayName('policy-with-verified-id');
@@ -55,13 +55,10 @@ $verifiableCredentialSettings->setCredentialTypes($credentialTypesArray);
 
 $requestBody->setVerifiableCredentialSettings($verifiableCredentialSettings);
 $additionalData = [
-'expiration' => $requestBody = new Expiration();
-$requestBody->setType('afterDuration');
-
-$requestBody->setDuration('P365D');
-
-
-$requestBody->setExpiration($expiration);
+'expiration' => [
+'type' => 'afterDuration', 
+'duration' => 'P365D', 
+],
 
 ];
 $requestBody->setAdditionalData($additionalData);

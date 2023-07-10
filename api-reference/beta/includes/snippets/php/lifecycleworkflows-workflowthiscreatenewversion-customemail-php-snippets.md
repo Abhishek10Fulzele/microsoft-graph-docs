@@ -7,7 +7,7 @@ description: "Automatically generated file. DO NOT MODIFY"
 <?php
 
 // THIS SNIPPET IS A PREVIEW FOR THE KIOTA BASED SDK. NON-PRODUCTION USE ONLY
-$graphServiceClient = new GraphServiceClient($requestAdapter);
+$graphServiceClient = new GraphServiceClient($tokenRequestContext, $scopes);
 
 $requestBody = new CreateNewVersionPostRequestBody();
 $additionalData = [
@@ -16,27 +16,20 @@ $additionalData = [
 		'displayName' => 'custom email marketing API test', 
 		'isEnabled' => true,
 		'isSchedulingEnabled' => false,
-		'executionConditions' => $requestBody = new ExecutionConditions();
-$		requestBody->set@odatatype('#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions');
+		'executionConditions' => [
+				'@odata.type' => '#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions', 
+				'scope' => [
+						'@odata.type' => '#microsoft.graph.identityGovernance.ruleBasedSubjectSet', 
+						'rule' => '(department eq \'Marketing\')', 
+				],
 
-$scope = new Scope();
-$		scope->set@odatatype('#microsoft.graph.identityGovernance.ruleBasedSubjectSet');
+				'trigger' => [
+						'@odata.type' => '#microsoft.graph.identityGovernance.timeBasedAttributeTrigger', 
+						'timeBasedAttribute' => 'employeeHireDate', 
+						'offsetInDays' => 0,
+				],
 
-$		scope->setRule('(department eq \'Marketing\')');
-
-
-$requestBody->setScope($scope);
-$trigger = new Trigger();
-$		trigger->set@odatatype('#microsoft.graph.identityGovernance.timeBasedAttributeTrigger');
-
-$		trigger->setTimeBasedAttribute('employeeHireDate');
-
-		$trigger->setOffsetInDays(0);
-
-
-$requestBody->setTrigger($trigger);
-
-$requestBody->setExecutionConditions($executionConditions);
+		],
 
 		'tasks' => $tasks1 = new ();
 		$tasks1->setContinueOnError(false);
